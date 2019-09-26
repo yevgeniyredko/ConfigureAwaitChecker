@@ -12,6 +12,8 @@ namespace Arbel.ReSharper.ConfigureAwaitPlugin.DaemonStage
         private const string TaskOfTTypeName = "System.Threading.Tasks.Task`1";
         private const string ValueTaskTypeName = "System.Threading.Tasks.ValueTask";
         private const string ValueTaskOfTTypeName = "System.Threading.Tasks.ValueTask`1";
+        private const string IAsyncDisposableTypeName = "System.IAsyncDisposable";
+        private const string IAsyncEnumerableOfTTypeName = "System.Collections.Generic.IAsyncEnumerable`1";
 
         protected override void Run(IAwaitExpression element, ElementProblemAnalyzerData data, IHighlightingConsumer consumer)
         {
@@ -28,7 +30,9 @@ namespace Arbel.ReSharper.ConfigureAwaitPlugin.DaemonStage
             return string.Equals(typeName, TaskTypeName, StringComparison.Ordinal) ||
                    string.Equals(typeName, TaskOfTTypeName, StringComparison.Ordinal) ||
                    string.Equals(typeName, ValueTaskTypeName, StringComparison.Ordinal) ||
-                   string.Equals(typeName, ValueTaskOfTTypeName, StringComparison.Ordinal);
+                   string.Equals(typeName, ValueTaskOfTTypeName, StringComparison.Ordinal) ||
+                   string.Equals(typeName, IAsyncDisposableTypeName, StringComparison.Ordinal) ||
+                   string.Equals(typeName, IAsyncEnumerableOfTTypeName, StringComparison.Ordinal);
         }
     }
 }
